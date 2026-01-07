@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geprek Sultan | Pedas Berkelas</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        /* --- RESET & VARIABLES --- */
+        :root {
+            --bg-color: #0a0a0a;
+            --card-bg: #161616;
+            --text-color: #f0f0f0;
+            --gold: #D4AF37;
+            --gold-hover: #b5952f;
+            --dark-gold: #8a701e;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--gold);
+        }
+
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+
+        /* --- NAVIGATION --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            background-color: rgba(10, 10, 10, 0.95);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #333;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--gold);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .btn-order {
+            padding: 0.7rem 1.5rem;
+            background-color: var(--gold);
+            color: #000;
+            font-weight: 600;
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+
+        .btn-order:hover {
+            background-color: var(--gold-hover);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.8)), 
+                        url('https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            color: #ccc;
+        }
+
+        /* --- MENU SECTION --- */
+        .section-padding {
+            padding: 5rem 10%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title .line {
+            width: 60px;
+            height: 3px;
+            background-color: var(--gold);
+            margin: 0 auto;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .menu-card {
+            background-color: var(--card-bg);
+            border: 1px solid #333;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s ease, border-color 0.3s;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--dark-gold);
+        }
+
+        .menu-img {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+            /* Placeholder image */
+            background-color: #222; 
+        }
+
+        .menu-info {
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .menu-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #fff;
+        }
+
+        .price {
+            color: var(--gold);
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .desc {
+            font-size: 0.9rem;
+            color: #aaa;
+            margin-bottom: 1.5rem;
+        }
+
+        /* --- TESTIMONIAL / ABOUT --- */
+        .about {
+            background-color: #0f0f0f;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-img {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-img img {
+            width: 100%;
+            border-radius: 4px;
+            border: 2px solid var(--gold);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: #000;
+            padding: 3rem 5%;
+            text-align: center;
+            border-top: 1px solid #333;
+        }
+
+        .social-icons {
+            margin-bottom: 1.5rem;
+        }
+
+        .social-icons a {
+            color: var(--gold);
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: #fff;
+        }
+
+        .footer-text {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* --- MOBILE RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none; /* Simplifikasi menu mobile */
+            }
+            .hero h1 { font-size: 2.5rem; }
+            .about { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">GEPREK SULTAN</div>
+        <div class="nav-links">
+            <a href="#home">Beranda</a>
+            <a href="#menu">Menu</a>
+            <a href="#about">Tentang</a>
+            <a href="#contact">Lokasi</a>
+        </div>
+        <a href="https://wa.me/6281234567890" class="btn-order">
+            <i class="fas fa-shopping-cart"></i> Pesan
+        </a>
+    </nav>
+
+    <section class="hero" id="home">
+        <h1>Pedas Itu Berkelas</h1>
+        <p>Nikmati sensasi ayam geprek dengan bumbu rempah premium dan sambal yang membakar semangat.</p>
+        <a href="#menu" class="btn-order">Lihat Menu</a>
+    </section>
+
+    <section class="section-padding" id="menu">
+        <div class="section-title">
+            <h2>Menu Andalan</h2>
+            <div class="line"></div>
+        </div>
+
+        <div class="menu-grid">
+            <div class="menu-card">
+                <img src="https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&w=500&q=60" alt="Geprek Original" class="menu-img">
+                <div class="menu-info">
+                    <h3>Geprek Original</h3>
+                    <span class="price">Rp 25.000</span>
+                    <p class="desc">Ayam krispi bumbu rahasia digeprek dengan sambal bawang level 1-10.</p>
+                    <a href="#" class="btn-order">Pesan</a>
+                </div>
+            </div>
+
+            <div class="menu-card">
+                <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=500&q=60" alt="Geprek Mozzarella" class="menu-img">
+                <div class="menu-info">
+                    <h3>Geprek Mozzarella</h3>
+                    <span class="price">Rp 32.000</span>
+                    <p class="desc">Perpaduan pedasnya sambal korek dengan lelehan keju mozzarella premium.</p>
+                    <a href="#" class="btn-order">Pesan</a>
+                </div>
+            </div>
+
+            <div class="menu-card">
+                <img src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=500&q=60" alt="Geprek Sambal Matah" class="menu-img">
+                <div class="menu-info">
+                    <h3>Geprek Sambal Matah</h3>
+                    <span class="price">Rp 28.000</span>
+                    <p class="desc">Aroma segar serai dan daun jeruk dalam sambal matah khas Bali.</p>
+                    <a href="#" class="btn-order">Pesan</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding about" id="about">
+        <div class="about-img">
+            <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Koki Memasak">
+        </div>
+        <div class="about-text">
+            <h2>Cita Rasa Bintang Lima</h2>
+            <div class="line" style="margin: 0 0 1.5rem 0;"></div>
+            <p style="color: #ccc; margin-bottom: 1rem;">
+                Geprek Sultan menghadirkan pengalaman makan ayam geprek yang berbeda. Kami tidak hanya menjual rasa pedas, tapi juga kualitas. 
+            </p>
+            <p style="color: #ccc; margin-bottom: 1rem;">
+                Menggunakan ayam segar pilihan, digoreng dengan minyak kelapa murni, dan diulek dadakan dengan cabai rawit merah terbaik.
+            </p>
+            <ul style="color: var(--gold); margin-top: 1rem;">
+                <li><i class="fas fa-check"></i> Ayam Segar Harian</li>
+                <li><i class="fas fa-check"></i> Sambal Ulek Dadakan</li>
+                <li><i class="fas fa-check"></i> Tempat Nyaman & Elegan</li>
+            </ul>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-whatsapp"></i></a>
+        </div>
+        <p class="footer-text">Jl. Sudirman No. 99, Jakarta Selatan</p>
+        <p class="footer-text">&copy; 2024 Geprek Sultan. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Script sederhana untuk smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
